@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegistrationFormRequest;
 use App\Traits\ApiResponseWithHttpStatus;
 use App\User;
@@ -38,7 +39,7 @@ class UserController extends Controller
         return $this->apiResponse('Registration Success', $data, Response::HTTP_OK, true);
     }
 
-    public  function login(Request $request)
+    public  function login(LoginFormRequest $request)
     {
 
         $input = $request->only('email', 'password');
