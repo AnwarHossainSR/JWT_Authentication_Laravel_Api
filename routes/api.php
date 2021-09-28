@@ -21,8 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'auth'], function () {
     Route::post('register', 'UserController@register');
     Route::post('login', 'UserController@login')->name('login');
+    Route::post('forgot-password', 'UserController@forgotPassword');
 });
 
+Route::get('user', 'UserController@authenticatedUser');
 Route::group(['middleware' => 'auth:users'], function () {
     Route::prefix('user')->group(function () {
         Route::post('logout', 'UserController@logout');
